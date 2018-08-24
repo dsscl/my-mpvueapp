@@ -1,6 +1,7 @@
 # y
 
 > A Mpvue project
+一个基于mpvue搭建的小程序
 
 ## Build Setup
 
