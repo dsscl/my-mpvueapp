@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/home/main",
+    "pages/logs/main",
+    "pages/selectCity/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "猫眼电影",
+    "navigationBarTextStyle": "black"
+  }
+}
