@@ -12,14 +12,23 @@ function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-function getEntry (rootSrc) {
-  var map = {};
-  glob.sync(rootSrc + '/pages/**/main.js')
-  .forEach(file => {
-    var key = relative(rootSrc, file).replace('.js', '');
-    map[key] = file;
-  })
-   return map;
+// function getEntry (rootSrc) {
+//   var map = {};
+//   glob.sync(rootSrc + '/pages/**/main.js')
+//   .forEach(file => {
+//     var key = relative(rootSrc, file).replace('.js', '');
+//     map[key] = file;
+//   })
+//    return map;
+// }
+function getEntry(rootSrc, pattern) {
+  var files = glob.sync(path.resolve(rootSrc, pattern))
+  return files.reduce((res, file) => {
+      var info = path.parse(file)
+      var key = info.dir.slice(rootSrc.length + 1) + '/' + info.name
+      res[key] = path.resolve(file)
+      return res
+  }, {})
 }
 
 const appEntry = { app: resolve('./src/main.js') }

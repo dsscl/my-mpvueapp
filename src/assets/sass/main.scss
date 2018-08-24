@@ -22,26 +22,6 @@ i {
   font-style: normal;
 }
 
-.home {
-  padding-bottom: 45px;
-  .headerTab {
-    margin: 0 10px;
-    height: 15px;
-    padding: 10px 5px;
-    color: 999;
-    border-bottom: 1px solid transparent;
-    &.cur {
-      color: $the-color-red;
-      border-color: $the-color-red;
-    }
-  }
-  .icon-3DIMAX {
-    height: 20px;
-    line-height: 20px;
-    font-size: 32px;
-    color: #78abca;
-  }
-}
 [class *= 'btn-'] {
   display: inline-block;
   line-height: 20px;

@@ -5,42 +5,33 @@
 
 <template>
 <div>
-  <main id="indexlistScrollDom" class="absolute top0 bottom0 width100 scroll-y height100" style="z-index: 100">
-    <section v-for="(v,i) in formatList" :key="i" :ref="'index-item-title-' + v.initial">
-      <!-- <div v-if="!onlyShowList" class="lineheight20" style="padding: 12px 15px 8px 15px">{{v.title}}</div> -->
-      <!-- <div v-if="v.type && v.type === 'group' && !onlyShowList" class="ts-bgcolor-white" style="padding: 11px 50px 11px 15px">
-        <p v-for="(group,index) in v.data" :key="index" class="keywordOption">
-          <span v-for="(item,j) in group" :key="j" @click="itemClicked(item)">{{item.name}}</span>
-        </p>
-      </div>
-      <p v-if="v.type ==='list'" class="keywordOption ts-bgcolor-white" style="padding: 11px 50px 11px 15px">
-        <span v-for="(item,j) in v.data" :key="j" @click="itemClicked(item)">{{item.name}}</span>
-      </p> -->
-      <p class="keywordOption ts-bgcolor-white" style="padding: 11px 50px 11px 15px">
-        <!-- <span v-for="(item,j) in v.data" :key="j" @click="itemClicked(item)"> -->
-          {{v.city}}
-        <!-- </span> -->
-      </p>
-    </section>
+  <main class="absolute top0 bottom0 width100 height100">
+    <scroll-view scroll-y style="height:100%;" :scroll-into-view="toView">
+      <section v-for="(item, i) in formatList" :key="i" 
+      :id="item.title==='定位'?'index-0':(item.title==='热门'?'index-1':'index-' + item.title)">
+        <div v-if="!onlyShowList" class="lineheight20" style="padding: 12px 15px 8px 15px">{{item.title}}</div>
+        <div v-if="item.type && item.type === 'group' && !onlyShowList" class="ts-bgcolor-white padding10X paddingleft15 paddingright50">
+          <p v-for="(jitem, j) in item.data" :key="j">
+            <span v-for="(kitem, k) in jitem" :key="k" class="keywordOption" @tap="itemClicked(k)">{{kitem.city}}</span>
+          </p>
+        </div>
+        <div v-if="item.type ==='list'" class="ts-bgcolor-white paddingleft15 paddingright50">
+          <p v-for="(jitem, j) in item.data" :key="j" class="borderbottom1 lineheight35" @tap="itemClicked(item)">{{jitem.city}}</p>
+        </div>
+      </section>
+    </scroll-view>
   </main>
-  <nav v-if="showIndex && !onlyShowList" class="fixed right0 translateY paddingX5 textAlignCenter the-color-blue fontsize-2" style="z-index: 101">
-    <li v-for="(item,index) in formatList" :key="index" @click="go2Key(item.title)">{{item.title}}</li>
+  <nav v-if="showIndex && !onlyShowList" class="fixed right0 translateY paddingX5 textAlignCenter the-color-blue fontsize-1" style="margin-top: 2px;z-index: 101">
+    <li v-for="(item, index) in formatList" :key="index" @tap="go2Key(item.title)">{{item.title}}</li>
   </nav>
 </div>
 </template>
 
 <script>
 import * as Format from './format';
-// import city from '../../../utils/city'
+import { cityList, hotList, locateList } from '@/utils/city'
 export default {
   props: {
-    normalList: {
-      type: Array,
-      default: () => ([
-        { type: 'list', title: '杭州', data: [{ name: 'aaa', title: 'aaa'}]}
-      ])
-      // default: () => ([...city])
-    },
     onlyShowList: {
       type: Boolean,
       default: false
@@ -49,59 +40,41 @@ export default {
       type: Boolean,
       default: true
     },
-    hotListConfig: {
-      type: Object,
-      default: () => ({})
-    },
-    // 城市选择子组件 特殊情况支持
-    cityLocationConfig: {
-      type: Object,
-      default: () => ({})
-    }
   },
   computed: {
     formatList () {
-      const { normalList, hotListConfig, cityLocationConfig } = this;
-      return Format.totalList(normalList, hotListConfig, cityLocationConfig);
+      return Format.totalList(cityList, hotList, locateList);
     }
   },
   data: () => ({
+    toView: ''
   }),
-  mounted() {
-    console.log(this.formatList)
+  async onLoad() {
   },
   methods: {
     itemClicked (item) {
       this.$emit('wxcIndexlistItemClicked', item);
     },
     go2Key (key) {
-      const keyEl = this.$refs['index-item-title-' + key][0];
-      if(keyEl) {
-        // let heightDiff = keyEl.offsetTop - document.getElementById('indexlistScrollDom').clientHeight - keyEl.clientHeight - 10
-        // if(heightDiff > 0) {
-        //   let cssText = 'padding-bottom: ' + heightDiff + 'px'
-        //   document.getElementById('indexlistScrollDom').setAttribute('style', cssText)
-        // } else {
-        //   let cssText = 'padding-bottom: 0'
-        //   document.getElementById('indexlistScrollDom').setAttribute('style', cssText)
-        // }
-        // this.$vux.toast.show({
-        //   type: 'text',
-        //   text: key,
-        //   position: 'middle',
-        //   width: '3.5em'
-        // })
-        document.getElementById('indexlistScrollDom').scrollTop = keyEl.offsetTop
+      if(key === '定位') {
+        this.toView = 'index-0'
+      } else if (key === '热门') {
+        this.toView = 'index-1'
+      } else {
+        this.toView = 'index-' + key
       }
     }
   }
 }
 </script>
 <style lang="css" scoped>
-  #indexlistScrollDom .keywordOption {
-    margin: 7px 8px 7px 0;
-  }
-  #indexlistScrollDom .keywordOption:hover {
-    background: #E6EFFF;
+  .keywordOption {
+    margin: 5px;
+    min-width: 100px;
+    padding: 3px 20px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #e6e6e6;
+    border-radius: 2px;
   }
 </style>

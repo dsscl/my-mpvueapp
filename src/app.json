@@ -1,9 +1,5 @@
 {
-  "pages": [
-    "pages/home/main",
-    "pages/logs/main",
-    "pages/selectCity/main"
-  ],
+  "pages": ["pages/home/main", "pages/selectCity/main"],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
