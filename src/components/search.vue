@@ -60,7 +60,7 @@ export default {
 <style lang="scss" scoped>
 .search {
   padding: 10px 15px;
-  font-size: 16px;
+  font-size: 15px;
   .inputWrap {
     position: relative;
     width: 85%;

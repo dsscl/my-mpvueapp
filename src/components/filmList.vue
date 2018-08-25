@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul v-if="ifList" class="paddingleft10">
-      <li v-for="(item, index) in listData" :key="index" class="width100 padding10X borderbottom1 flex">
+      <li v-for="(item, index) in listData" :key="index" class="width100 padding10X borderbottom1 flex" @tap="clickItem(item)">
         <div class="posterSize itemflex-00auto relative">
           <img :src="item.poster" class="posterSize"/>
           <i class="icon-video fontsize6 color-white absolute translateXY"></i>
@@ -38,6 +38,13 @@
 
 <script>
 export default {
+  methods: {
+    clickItem(obj) {
+      wx.navigateTo({
+        url: '/pages/filmDetail/main?data=' + JSON.stringify(obj),
+      })
+    }
+  },
   props: {
     ifList: {
       type: Boolean,

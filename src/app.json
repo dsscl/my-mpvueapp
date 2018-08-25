@@ -1,5 +1,5 @@
 {
-  "pages": ["pages/home/main", "pages/selectCity/main", "pages/search/main"],
+  "pages": ["pages/home/main", "pages/selectCity/main", "pages/search/main", "pages/filmDetail/main"],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#f0423b",
