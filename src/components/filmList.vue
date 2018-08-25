@@ -29,7 +29,7 @@
           <div class="color-999 lineEllipsis">今天{{item.cinema}}家影院放映{{item.field}}场</div>
         </div>
       </li>
-      <li v-show="isLoading" class="paddingtop10 paddingbottom20 textAlignCenter color-999">加载中...</li>
+      <li v-show="isLoading" class="paddingtop10 paddingbottom20 textAlignCenter color-999">加载中<i class="icon-loading"></i></li>
       <li v-show="noMore" class="paddingtop10 paddingbottom20 textAlignCenter color-999">没有更多啦~</li>
       <li v-show="noData && listData.length===0" class="paddingtop10 paddingbottom20 textAlignCenter color-999">暂无数据</li>
     </ul>

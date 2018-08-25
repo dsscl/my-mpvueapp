@@ -1,6 +1,6 @@
 <template>
-  <div class="ts-bgcolor-bg">
-    <header class="fixed top0 width100" style="height: 40px">
+  <div>
+    <header class="fixed top0 width100 ts-bgcolor-bg" style="height: 50px">
       <search :callbackUrl="'/pages/home/main'" :placeholder="'请输入片名'" @goSearch="goSearch"></search>
     </header>
     <main class="fixed width100 ts-bgcolor-white" style="top: 50px;height: calc(100% - 50px)">
@@ -10,7 +10,6 @@
     </main>
   </div>
 </template>
-
 <script>
 import search from '@/components/search'
 import filmList from '@/components/filmList'
@@ -26,6 +25,9 @@ export default {
     noMore: false,
     noData: false
   }),
+  async onLoad() {
+    this.listData = []
+  },
   methods: {
     // 执行搜索
     goSearch(val) {
@@ -50,7 +52,7 @@ export default {
         setTimeout(() => {
           this.isLoading = false
           this.listData.push(...resFilmData)
-        }, 2000)
+        }, 1000)
       } else {
         this.noMore = true
       }
@@ -58,6 +60,3 @@ export default {
   }
 }
 </script>
-
-<style>
-</style>

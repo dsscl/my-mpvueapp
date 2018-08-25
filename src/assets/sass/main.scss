@@ -21,6 +21,9 @@ li {
 i {
   font-style: normal;
 }
+a,a:hover,a:active,a:visited,a:link,a:focus{
+  background: none;
+}
 
 [class *= 'btn-'] {
   display: inline-block;
@@ -33,5 +36,29 @@ i {
   }
   &.btn-red {
     background-color: $the-color-red;
+  }
+}
+
+.icon-loading{
+  margin-left: 5px;
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  border-radius: 100%;
+  border: 3px solid #999;
+  border-bottom-color: transparent;
+  vertical-align: middle;
+  -webkit-animation: rotate 0.75s linear infinite;
+  animation: rotate 0.75s linear infinite;
+}
+@keyframes rotate {
+  0% {
+      transform: rotate(0deg);
+  }
+  50% {
+      transform: rotate(180deg);
+  }
+  100% {
+      transform: rotate(360deg);
   }
 }

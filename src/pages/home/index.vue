@@ -75,7 +75,7 @@ export default {
         setTimeout(() => {
           this.isLoading = false
           this.listData.push(...resFilmData)
-        }, 2000)
+        }, 1000)
       } else {
         this.noMore = true
       }

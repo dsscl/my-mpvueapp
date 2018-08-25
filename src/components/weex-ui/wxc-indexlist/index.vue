@@ -21,7 +21,7 @@
       </section>
     </scroll-view>
   </main>
-  <nav v-if="showIndex && !onlyShowList" class="fixed right0 translateY paddingX5 textAlignCenter fontsize-1" style="margin-top: 2px;z-index: 101">
+  <nav v-if="showIndex && !onlyShowList" class="fixed right0 translateY textAlignCenter fontsize-1" style="padding: 1px 5px;z-index: 101">
     <li v-for="(item, index) in formatList" :key="index" @tap="gotoIndex(item.title)">{{item.title}}</li>
   </nav>
 </div>

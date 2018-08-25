@@ -27,6 +27,9 @@ export default {
       }
     }
   },
+  async onLoad() {
+    this.keyword = ''
+  },
   methods: {
     // 监听搜索框变化
     input(e) {
@@ -56,7 +59,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .search {
-  padding: 5px 10px;
+  padding: 10px 15px;
+  font-size: 16px;
   .inputWrap {
     position: relative;
     width: 85%;
@@ -74,10 +78,11 @@ export default {
       right: 10px;
     }
     .searchInput {
+      padding: 5px 30px;
+      line-height: 20px;
       border: 1px solid #e6e6e6;
-      padding: 3px 30px;
-      background-color: #fff;
       border-radius: 4px;
+      background-color: #fff;
     }
   }
   .operateBtn {
