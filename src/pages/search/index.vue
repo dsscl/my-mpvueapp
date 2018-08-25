@@ -25,8 +25,9 @@ export default {
     noMore: false,
     noData: false
   }),
-  async onLoad() {
-    this.listData = []
+  async onShow() {
+    this.listData = [],
+    this.noData = false
   },
   methods: {
     // 执行搜索
