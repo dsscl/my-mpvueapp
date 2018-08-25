@@ -2,18 +2,18 @@
   <div class="home clear">
     <main class="fixed width100" style="height: calc(100% - 45px)">
     <scroll-view scroll-y style="height: 100%;" @scroll="scrollFn" @scrolltolower="loadMore">
-    <header class="borderbottom1 flex-align-spacebetween" style="height: 40px">
-      <a class="flex-align paddingX10" href="/pages/selectCity/main">
-        杭州<i class="color-999">▼</i>
-      </a>
-      <div class="flex-align">
-        <p :class="['headerTab', {'cur': headerTab===1}]" @tap="switchTab('header', 1)">热映</p>
-        <p :class="['headerTab', {'cur': headerTab===2}]" @tap="switchTab('header', 2)">待映</p>
-      </div>
-      <div class="height100 paddingleft10 paddingright15 borderleft1 flex-align-justify">
-        <i class="icon-search fontsize2 the-color-red"></i>
-      </div>
-    </header>
+      <header class="borderbottom1 flex-align-spacebetween" style="height: 40px">
+        <a class="flex-align paddingX10" href="/pages/selectCity/main">
+          {{curCity}}<i class="icon-uparrow rotate180 color-999"></i>
+        </a>
+        <div class="fontsize1 bold flex-align">
+          <p :class="['headerTab', {'cur': headerTab===1}]" @tap="switchTab('header', 1)">热映</p>
+          <p :class="['headerTab', {'cur': headerTab===2}]" @tap="switchTab('header', 2)">待映</p>
+        </div>
+        <a href="/pages/search/main" class="height100 paddingleft10 paddingright15 borderleft1 flex-align-justify">
+          <i class="icon-search fontsize4 bold the-color-red"></i>
+        </a>
+      </header>
       <ul v-if="ifMain" class="paddingleft10">
         <li v-for="(item, index) in filmList" :key="index" class="width100 padding10X borderbottom1 flex">
           <div class="posterSize itemflex-00auto relative">
@@ -81,11 +81,13 @@ export default {
       filmList: [],
       isLoading: false,
       noData: false,
-      ifMain: true
+      ifMain: true,
+      curCity: ''
     }
   },
   async onLoad() {
     this.filmList.push(...resData)
+    this.curCity = this.$root.$mp.query.city || '杭州'
   },
   methods: {
     switchTab(type, val) {

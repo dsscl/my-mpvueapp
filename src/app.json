@@ -1,9 +1,9 @@
 {
-  "pages": ["pages/home/main", "pages/selectCity/main"],
+  "pages": ["pages/home/main", "pages/selectCity/main", "pages/search/main"],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#f0423b",
     "navigationBarTitleText": "猫眼电影",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "#fff"
   }
 }

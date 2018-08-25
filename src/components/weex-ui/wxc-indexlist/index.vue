@@ -7,21 +7,21 @@
 <div>
   <main class="absolute top0 bottom0 width100 height100">
     <scroll-view scroll-y style="height:100%;" :scroll-into-view="toView">
-      <section v-for="(item, i) in formatList" :key="i" 
+      <section v-for="(item, i) in formatList" :key="i"
       :id="item.title==='定位'?'index-0':(item.title==='热门'?'index-1':'index-' + item.title)">
         <div v-if="!onlyShowList" class="lineheight20" style="padding: 12px 15px 8px 15px">{{item.title}}</div>
-        <div v-if="item.type && item.type === 'group' && !onlyShowList" class="ts-bgcolor-white padding10X paddingleft15 paddingright50">
+        <div v-if="item.type && item.type === 'group' && !onlyShowList" class="ts-bgcolor-white padding10X paddingleft15 paddingright40">
           <p v-for="(jitem, j) in item.data" :key="j">
-            <span v-for="(kitem, k) in jitem" :key="k" class="keywordOption" @tap="itemClicked(k)">{{kitem.city}}</span>
+            <a :href="'/pages/home/main?city='+kitem.city" v-for="(kitem, k) in jitem" :key="k" class="inlineBlock keywordOption">{{kitem.city}}</a>
           </p>
         </div>
-        <div v-if="item.type ==='list'" class="ts-bgcolor-white paddingleft15 paddingright50">
-          <p v-for="(jitem, j) in item.data" :key="j" class="borderbottom1 lineheight35" @tap="itemClicked(item)">{{jitem.city}}</p>
+        <div v-if="item.type ==='list'" class="ts-bgcolor-white paddingleft15 paddingright40">
+          <a :href="'/pages/home/main?city='+jitem.city" v-for="(jitem, j) in item.data" :key="j" class="borderbottom1 lineheight40">{{jitem.city}}</a>
         </div>
       </section>
     </scroll-view>
   </main>
-  <nav v-if="showIndex && !onlyShowList" class="fixed right0 translateY paddingX5 textAlignCenter the-color-blue fontsize-1" style="margin-top: 2px;z-index: 101">
+  <nav v-if="showIndex && !onlyShowList" class="fixed right0 translateY paddingX5 textAlignCenter fontsize-1" style="margin-top: 2px;z-index: 101">
     <li v-for="(item, index) in formatList" :key="index" @tap="go2Key(item.title)">{{item.title}}</li>
   </nav>
 </div>
@@ -52,9 +52,6 @@ export default {
   async onLoad() {
   },
   methods: {
-    itemClicked (item) {
-      this.$emit('wxcIndexlistItemClicked', item);
-    },
     go2Key (key) {
       if(key === '定位') {
         this.toView = 'index-0'
@@ -70,11 +67,8 @@ export default {
 <style lang="css" scoped>
   .keywordOption {
     margin: 5px;
-    min-width: 100px;
-    padding: 3px 20px;
-    height: 30px;
-    line-height: 30px;
+    padding: 5px 20px;
     border: 1px solid #e6e6e6;
-    border-radius: 2px;
+    border-radius: 4px;
   }
 </style>
