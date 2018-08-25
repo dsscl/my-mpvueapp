@@ -3,7 +3,7 @@ function formatNumber (n) {
   return str[1] ? str : `0${str}`
 }
 
-export function formatTime (date) {
+function formatTime (date) {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
   const day = date.getDate()
@@ -18,7 +18,13 @@ export function formatTime (date) {
   return `${t1} ${t2}`
 }
 
-export default {
-  formatNumber,
-  formatTime
+function removeSpace (val) {
+  const reg = /\s+/g
+  return val.replace(reg, '')
+}
+
+module.exports = {
+  formatNumber: formatNumber,
+  formatTime: formatTime,
+  removeSpace: removeSpace
 }

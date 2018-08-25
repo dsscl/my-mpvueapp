@@ -12,17 +12,17 @@
         <div v-if="!onlyShowList" class="lineheight20" style="padding: 12px 15px 8px 15px">{{item.title}}</div>
         <div v-if="item.type && item.type === 'group' && !onlyShowList" class="ts-bgcolor-white padding10X paddingleft15 paddingright40">
           <p v-for="(jitem, j) in item.data" :key="j">
-            <a :href="'/pages/home/main?city='+kitem.city" v-for="(kitem, k) in jitem" :key="k" class="inlineBlock keywordOption">{{kitem.city}}</a>
+            <a :href="callbackUrl+'?city='+kitem.city" v-for="(kitem, k) in jitem" :key="k" class="inlineBlock keywordOption">{{kitem.city}}</a>
           </p>
         </div>
         <div v-if="item.type ==='list'" class="ts-bgcolor-white paddingleft15 paddingright40">
-          <a :href="'/pages/home/main?city='+jitem.city" v-for="(jitem, j) in item.data" :key="j" class="borderbottom1 lineheight40">{{jitem.city}}</a>
+          <a :href="callbackUrl+'?city='+jitem.city" v-for="(jitem, j) in item.data" :key="j" class="borderbottom1 lineheight40">{{jitem.city}}</a>
         </div>
       </section>
     </scroll-view>
   </main>
   <nav v-if="showIndex && !onlyShowList" class="fixed right0 translateY paddingX5 textAlignCenter fontsize-1" style="margin-top: 2px;z-index: 101">
-    <li v-for="(item, index) in formatList" :key="index" @tap="go2Key(item.title)">{{item.title}}</li>
+    <li v-for="(item, index) in formatList" :key="index" @tap="gotoIndex(item.title)">{{item.title}}</li>
   </nav>
 </div>
 </template>
@@ -40,6 +40,9 @@ export default {
       type: Boolean,
       default: true
     },
+    callbackUrl: {
+      type: String,
+    }
   },
   computed: {
     formatList () {
@@ -52,7 +55,8 @@ export default {
   async onLoad() {
   },
   methods: {
-    go2Key (key) {
+    // 滚动条移动到指定索引
+    gotoIndex (key) {
       if(key === '定位') {
         this.toView = 'index-0'
       } else if (key === '热门') {
