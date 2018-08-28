@@ -14,7 +14,7 @@ export default {
   data: () => ({
     list: [],
     showIndex: true,
-    callbackUrl: '/pages/home/main'
+    callbackUrl: 'home'
   })
 }
 </script>

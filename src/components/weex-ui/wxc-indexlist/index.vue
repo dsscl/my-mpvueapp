@@ -12,11 +12,11 @@
         <div v-if="!onlyShowList" class="lineheight20" style="padding: 12px 15px 8px 15px">{{item.title}}</div>
         <div v-if="item.type && item.type === 'group' && !onlyShowList" class="ts-bgcolor-white padding10X paddingleft15 paddingright40">
           <p v-for="(jitem, j) in item.data" :key="j">
-            <a :href="callbackUrl+'?city='+kitem.city" v-for="(kitem, k) in jitem" :key="k" class="inlineBlock keywordOption">{{kitem.city}}</a>
+            <a @tap="$router.push({path: callbackUrl, query: {city: kitem.city}})"  v-for="(kitem, k) in jitem" :key="k" class="inlineBlock keywordOption">{{kitem.city}}</a>
           </p>
         </div>
         <div v-if="item.type ==='list'" class="ts-bgcolor-white paddingleft15 paddingright40">
-          <a :href="callbackUrl+'?city='+jitem.city" v-for="(jitem, j) in item.data" :key="j" class="borderbottom1 lineheight40">{{jitem.city}}</a>
+          <a @tap="$router.push({path: callbackUrl, query: {city: jitem.city}})" v-for="(jitem, j) in item.data" :key="j" class="borderbottom1 lineheight40">{{jitem.city}}</a>
         </div>
       </section>
     </scroll-view>

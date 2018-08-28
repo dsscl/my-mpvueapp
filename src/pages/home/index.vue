@@ -3,14 +3,14 @@
     <main class="fixed top0 width100" style="height: calc(100% - 45px)">
       <scroll-view scroll-y style="height: 100%;" @scrolltolower="loadMore">
         <header class="borderbottom1 flex-align-spacebetween" style="height: 40px">
-          <a class="flex-align paddingX10" href="/pages/selectCity/main">
+          <a class="flex-align paddingX10" @tap="$router.push('selectCity')">
             {{curCity}}<i class="icon-uparrow rotate180 color-999"></i>
           </a>
           <div class="fontsize1 bold flex-align">
             <p :class="['headerTab', {'cur': headerTab===1}]" @tap="switchTab('header', 1)">热映</p>
             <p :class="['headerTab', {'cur': headerTab===2}]" @tap="switchTab('header', 2)">待映</p>
           </div>
-          <a href="/pages/search/main" class="height100 paddingleft10 paddingright15 borderleft1 flex-align-justify">
+          <a class="height100 paddingleft10 paddingright15 borderleft1 flex-align-justify" @tap="$router.push('search')">
             <i class="icon-search fontsize4 bold the-color-red"></i>
           </a>
         </header>
@@ -51,7 +51,7 @@ export default {
   }),
   async onLoad() {
     this.listData.push(...resFilmData)
-    this.curCity = this.$root.$mp.query.city || '杭州'
+    this.curCity = this.$route.query.city || '杭州'
   },
   methods: {
     // tab切换

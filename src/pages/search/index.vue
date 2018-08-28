@@ -1,7 +1,7 @@
 <template>
   <div>
     <header class="fixed top0 width100 ts-bgcolor-bg" style="height: 50px">
-      <search :callbackUrl="'/pages/home/main'" :placeholder="'请输入片名'" @goSearch="goSearch"></search>
+      <search :callbackUrl="'home'" :placeholder="'请输入片名'" @goSearch="goSearch"></search>
     </header>
     <main class="fixed width100 ts-bgcolor-white" style="top: 50px;height: calc(100% - 50px)">
       <scroll-view scroll-y style="height: 100%;" @scrolltolower="loadMore">

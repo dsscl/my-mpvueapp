@@ -51,7 +51,7 @@ export default {
     item: {}
   }),
   async onShow() {
-    this.item = JSON.parse(this.$root.$mp.query.data)
+    this.item = JSON.parse(this.$route.query.film)
   },
   methods: {
   },

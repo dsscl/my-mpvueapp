@@ -40,8 +40,14 @@
 export default {
   methods: {
     clickItem(obj) {
-      wx.navigateTo({
-        url: '/pages/filmDetail/main?data=' + JSON.stringify(obj),
+      // wx.navigateTo({
+      //   url: '/pages/filmDetail/main?data=' + JSON.stringify(obj),
+      // })
+      this.$router.push({
+        path: 'filmDetail',
+        query: {
+          film: JSON.stringify(obj)
+        }
       })
     }
   },
