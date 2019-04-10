@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="absolute left0 right0 top0 bottom0 fontsize0 ts-bgcolor-bg ts-color-paragraph">
+    <div class="absolute left0 right0 top0 bottom0 font-size0 ts-bgcolor-bg color-666">
       <wxc-indexlist :normal-list="list" :show-index="showIndex" :callbackUrl="callbackUrl">
       </wxc-indexlist>
     </div>

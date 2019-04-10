@@ -1,9 +1,9 @@
 <template>
   <div>
-    <header class="fixed top0 width100 ts-bgcolor-bg" style="height: 50px">
+    <header class="fixed top0 width100 bgcolor-bg" style="height: 50px">
       <search :callbackUrl="'home'" :placeholder="'请输入片名'" @goSearch="goSearch"></search>
     </header>
-    <main class="fixed width100 ts-bgcolor-white" style="top: 50px;height: calc(100% - 50px)">
+    <main class="fixed width100 bgcolor-white" style="top: 50px;height: calc(100% - 50px)">
       <scroll-view scroll-y style="height: 100%;" @scrolltolower="loadMore">
         <film-list :listData="listData" :isLoading="isLoading" :noMore="noMore" :noData="noData"></film-list>
       </scroll-view>

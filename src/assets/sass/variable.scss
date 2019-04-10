@@ -1,0 +1,20 @@
+// 本项目色值
+$color-red: #f0423b;
+$color-blue: #55b1e8;
+$color-orange: #ff8100;
+$color-yellow: #feb500;
+$color-bg: #F7F7F7;
+$thecolors:
+(red, $color-red),
+(blue, $color-blue),
+(orange, $color-orange),
+(yellow, $color-yellow);
+@each $name,
+$color in $thecolors {
+  .color-#{$name} {
+    color: $color;
+  }
+  .bgcolor-#{$name} {
+    background-color: $color;
+  }
+}

@@ -1,7 +1,9 @@
 /*! variable */
 
-$fontsize0: 14px;
-// $color-border: #e6e6e6;
+$unit: px;
+$font-size0: 14;
+$step: 1;
+$color-border: #e2e2e2;
 $dirlist: top,
 bottom,
 left,
@@ -9,51 +11,33 @@ right;
 
 /*! color */
 
-.bgcolor-transparent {
-    background-color: transparent;
-}
-
-.bgcolor-white {
-    background-color: #fff;
-}
-
-.color-transparent {
-    color: transparent;
-}
-
-.color-white {
-    color: #fff;
-}
-
-.color-black {
-    color: #000;
-}
-
-.color-333 {
-    color: #333;
-}
-
-.color-666 {
-    color: #666;
-}
-
-.color-999 {
-    color: #999;
-}
-
-
-/*! font-size */
-
-.fontsizeInherit {
-    font-size: inherit;
-}
-
-@for $i from -6 through 10 {
-    .fontsize#{$i} {
-        font-size: $fontsize0 + $i;
+$colors: (transparent, transparent),
+    (white, white),
+    (black, black),
+    (333, #333),
+    (666, #666),
+    (999, #999);
+@each $name,
+$color in $colors {
+    .color-#{$name} {
+        color: $color;
+    }
+    .bgcolor-#{$name} {
+        background-color: $color;
     }
 }
 
+/*! font-size */
+
+.font-size-inherit {
+    font-size: inherit;
+}
+
+@for $i from -10 through 30 {
+    .font-size#{$i} {
+        font-size: ($font-size0 + $i)#{$unit};
+    }
+}
 
 /*! margin padding */
 
@@ -62,99 +46,87 @@ right;
     margin-right: auto;
 }
 
-$i: 30;
+$i: 100;
 @while $i>-1 {
     .margin#{$i}X {
-        margin-top: #{$i}px;
-        margin-bottom: #{$i}px;
+        margin-top: #{$i}#{$unit};
+        margin-bottom: #{$i}#{$unit};
     }
     .marginX#{$i} {
-        margin-left: #{$i}px;
-        margin-right: #{$i}px;
+        margin-left: #{$i}#{$unit};
+        margin-right: #{$i}#{$unit};
     }
     .padding#{$i}X {
-        padding-top: #{$i}px;
-        padding-bottom: #{$i}px;
+        padding-top: #{$i}#{$unit};
+        padding-bottom: #{$i}#{$unit};
     }
     .paddingX#{$i} {
-        padding-left: #{$i}px;
-        padding-right: #{$i}px;
+        padding-left: #{$i}#{$unit};
+        padding-right: #{$i}#{$unit};
     }
-    $i: $i - 5;
-}
-
-$i: 30;
-@while $i>-1 {
-    @each $dir in $dirlist {
-        .margin#{$dir}#{$i} {
-            margin-#{$dir}: #{$i}px;
-        }
-        .padding#{$dir}#{$i} {
-            padding-#{$dir}: #{$i}px;
-        }
-    }
-    $i: $i - 5;
+    $i: $i - $step;
 }
 
 $i: 100;
-@while $i>30 {
+@while $i>-1 {
     @each $dir in $dirlist {
-        .margin#{$dir}#{$i} {
-            margin-#{$dir}: #{$i}px;
+        .margin-#{$dir}#{$i} {
+            margin-#{$dir}: #{$i}#{$unit};
         }
-        .padding#{$dir}#{$i} {
-            padding-#{$dir}: #{$i}px;
+        .padding-#{$dir}#{$i} {
+            padding-#{$dir}: #{$i}#{$unit};
         }
     }
-    $i: $i - 10;
+    $i: $i - $step;
 }
-
 
 /*! border */
 
-.bordernone {
+.border-none {
     border: none;
 }
 
 .border1 {
-    border: 1px solid $color-border;
+    border: 1#{$unit} solid $color-border;
 }
 
-.border1transparent {
-    border: 1px solid transparent;
+.border1-transparent {
+    border: 1#{$unit} solid transparent;
 }
 
 @each $dir in $dirlist {
-    .border#{$dir}1 {
-        border-#{$dir}: 1px solid $color-border;
+    .border-#{$dir}1 {
+        border-#{$dir}: 1#{$unit} solid $color-border;
     }
 }
-
 
 /*! border-radius */
 
-.borderRadius50 {
+.border-radius50 {
     border-radius: 50%;
 }
 
-@each $i in 3,
-5 {
-    .borderRadius#{$i} {
-        border-radius: #{$i}px;
-    }
+.border-radius100 {
+    border-radius: 100%;
 }
 
+$i: 20;
+@while $i>-1 {
+    .border-radius#{$i} {
+        border-radius: #{$i}#{$unit};
+    }
+    $i: $i - 1;
+}
 
 /*! float */
 
-.floatLeft {
+.float-left {
     float: left;
 }
 
-.floatRight {
+.float-right {
     float: right;
 }
-
 
 /*! width */
 
@@ -163,7 +135,7 @@ $i: 100;
 }
 
 .width33 {
-    width: 33%;
+    width: 33.3%;
 }
 
 .width50 {
@@ -174,24 +146,21 @@ $i: 100;
     width: 100%;
 }
 
-
 /*! height */
 
 .height100 {
     height: 100%;
 }
 
-
 /*! line-height */
 
-$i: 50;
-@while $i>15 {
-    .lineheight#{$i} {
-        line-height: #{$i}px;
+$i: 100;
+@while $i>0 {
+    .line-height#{$i} {
+        line-height: #{$i}#{$unit};
     }
-    $i: $i - 5;
+    $i: $i - $step;
 }
-
 
 /*! display */
 
@@ -199,14 +168,13 @@ $i: 50;
     display: block;
 }
 
-.inlineBlock {
+.inline-block {
     display: inline-block;
 }
 
-.displayNone {
+.display-none {
     display: none;
 }
-
 
 /*! position */
 
@@ -238,31 +206,29 @@ $i: 50;
     transform: translate(-50%, -50%);
 }
 
-$i: 20;
-@while $i>-20 {
+$i: 100;
+@while $i>-100 {
     @each $dir in $dirlist {
         .#{$dir}#{$i} {
-            #{$dir}: #{$i}px;
+            #{$dir}: #{$i}#{$unit};
         }
     }
-    $i: $i - 5;
+    $i: $i - $step;
 }
-
 
 /*! text-align */
 
-.textAlignCenter {
+.text-align-center {
     text-align: center;
 }
 
-.textAlignLeft {
+.text-align-left {
     text-align: left;
 }
 
-.textAlignRight {
+.text-align-right {
     text-align: right;
 }
-
 
 /*! rotate */
 
@@ -274,15 +240,19 @@ $i: 20;
     transform: rotate(180deg);
 }
 
-
 /*! flex */
+
 .flex {
     display: flex;
 }
 
+.flex1 {
+    flex: 1
+}
+
 .flex-justify {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .flex-align {
@@ -343,9 +313,31 @@ $i: 20;
     @extend .flex-spacebetween;
 }
 
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap
+}
+
+.flex-baseline-wrap {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.flex-align-wrap {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 .flex-nowrap {
     display: flex;
     flex-wrap: nowrap;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
 }
 
 .flex-column-spacebetween {
@@ -368,17 +360,15 @@ $i: 20;
     flex: 1 1 auto;
 }
 
-
 /*! cursor */
 
-.cursorPointer {
+.cursor-pointer {
     cursor: pointer;
 }
 
-.cursorDefault {
+.cursor-default {
     cursor: default;
 }
-
 
 /*! justify */
 
@@ -393,36 +383,35 @@ $i: 20;
     width: 100%;
 }
 
-.c-justify {
-    text-align: justify;
-}
-
-
 /*! opacity */
 
-.opacity0 {
-    opacity: 0;
+$i: 10;
+@while $i>=0 {
+    .opacity_#{$i} {
+        opacity: 0.1 * $i;
+    }
+    $i: $i - 1;
 }
 
-.opacity1 {
-    opacity: 1;
-}
+/*! word-break */
 
-
-/*! work-break */
-
-.breakall {
+.break-all {
     word-break: break-all;
 }
 
-.breakword {
+.break-word {
     word-break: break-word;
 }
 
-.prewrap {
+/* white-space */
+
+.pre-wrap {
     white-space: pre-wrap;
 }
 
+.nowrap {
+    white-space: nowrap;
+}
 
 /*! scroll */
 
@@ -438,6 +427,26 @@ $i: 20;
     overflow: auto;
 }
 
+// line
+.line-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@for $i from 1 through 10 {
+    .line-limited#{$i} {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: $i;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.line-through {
+    text-decoration: line-through;
+}
 
 /*! other */
 
@@ -449,32 +458,37 @@ $i: 20;
     overflow: hidden;
 }
 
-.nowrap {
-    white-space: nowrap;
+.clear-both {
+    clear: both;
 }
 
-.lineEllipsis {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.inlineMiddle {
+.inline-middle {
     display: inline;
     vertical-align: middle;
 }
 
-
-/*! mixin */
-
-@mixin mixin-whb($width, $height, $border) {
-    width: $width;
-    height: $height;
-    border: $border;
+.border-box {
+    box-sizing: border-box;
 }
 
-@mixin mixin-btn($minwidth, $minheight, $paddingtb, $paddinglf) {
-    min-width: $minwidth;
-    min-height: $minheight;
-    padding: $paddingtb $paddinglf;
+.visibility-visible {
+    visibility: visible;
+}
+
+.visibility-hidden {
+    visibility: hidden;
+}
+
+.transition {
+    transition: all .3s;
+}
+
+.opacity-to0 {
+    opacity: 0;
+    @extend .transition
+}
+
+.opacity-to1 {
+    opacity: 1;
+    @extend .transition
 }
