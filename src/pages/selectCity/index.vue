@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import WxcIndexlist from '@/components/weex-ui/wxc-indexlist/index.vue';
+import WxcIndexlist from '@/components/weex-ui/wxc-indexlist/index.vue'
 export default {
-	components: { WxcIndexlist },
+  components: { WxcIndexlist },
   data: () => ({
     list: [],
     showIndex: true,
