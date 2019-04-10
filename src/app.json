@@ -4,6 +4,6 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#f0423b",
     "navigationBarTitleText": "猫眼电影",
-    "navigationBarTextStyle": "#fff"
+    "navigationBarTextStyle": "white"
   }
 }

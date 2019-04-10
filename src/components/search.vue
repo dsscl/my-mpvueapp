@@ -41,9 +41,7 @@ export default {
         if(this.keyword) {
           this.$emit('goSearch', removeSpace(this.keyword))
         } else {
-          wx.navigateTo({
-            url: this.callbackUrl
-          })
+          this.$router.push(callbackUrl)
         }
       }
       this.isChanged = false

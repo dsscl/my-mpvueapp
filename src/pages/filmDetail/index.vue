@@ -1,48 +1,48 @@
 <template>
-  <div class="paddingbottom50">
+  <div class="padding-bottom50">
     <main>
-      <section class="introWrap borderbottom1">
+      <section class="introWrap border-bottom1">
         <div class="flex-align">
           <div class="posterSize itemflex-00auto relative">
-            <i class="icon-video fontsize6 color-666 absolute translateXY"></i>
+            <i class="icon-video font-size6 color-666 absolute translateXY"></i>
           </div>
-          <div class="marginleft10 width100 paddingright10">
+          <div class="margin-left10 width100 padding-right10">
             <div class="flex-align-spacebetween">
               <p class="flex-align" style="width: 65%">
-                <span class="fontsize2 lineEllipsis">{{item.title}}</span>
-                <span v-if="item.is3D" class="marginleft5 icon-3DIMAX itemflex-00auto"></span>
+                <span class="font-size2 line-ellipsis">{{item.title}}</span>
+                <span v-if="item.is3D" class="margin-left5 icon-3DIMAX itemflex-00auto"></span>
               </p>
-              <p class="paddingleft5 itemflex-00auto the-color-yellow" style="max-width: 35%">
-                <span v-if="item.expect">{{item.expect}}<span class="fontsize-4">人想看</span></span>
-                <span v-else-if="item.score">{{item.score}}<span class="fontsize-4">分</span></span>
-                <span v-else class="fontsize-2 color-666">暂无评分</span>
+              <p class="padding-left5 itemflex-00auto color-yellow" style="max-width: 35%">
+                <span v-if="item.expect">{{item.expect}}<span class="font-size-4">人想看</span></span>
+                <span v-else-if="item.score">{{item.score}}<span class="font-size-4">分</span></span>
+                <span v-else class="font-size-2 color-666">暂无评分</span>
               </p>
             </div>
-            <div class="margintop5 color-999 lineEllipsis">{{item.type}}</div>
+            <div class="margin-top5 color-999 line-ellipsis">{{item.type}}</div>
             <div class="color-999 flex-align-spacebetween">
-              <p class="lineEllipsis" style="width: 80%">{{item.actor}}</p>
+              <p class="line-ellipsis" style="width: 80%">{{item.actor}}</p>
               <p>
                 <button v-if="item.isShow" class="btn-red">购票</button>
                 <button v-else class="btn-blue">预售</button>
               </p>
             </div>
-            <div class="color-999 lineEllipsis">今天{{item.cinema}}家影院放映{{item.field}}场</div>
+            <div class="color-999 line-ellipsis">今天{{item.cinema}}家影院放映{{item.field}}场</div>
           </div>
         </div>
-        <div class="margintop10 flex-align-spacebetween">
+        <div class="margin-top10 flex-align-spacebetween">
           <p class="operateBtn flex-align-justify">
-            <i class="marginright5 icon-like-fill"></i>想看
+            <i class="margin-right5 icon-like-fill"></i>想看
           </p>
           <p class="operateBtn flex-align-justify">
-            <i class="marginright5 icon-star fontsize4"></i>评分
+            <i class="margin-right5 icon-star font-size4"></i>评分
           </p>
         </div>
       </section>
-      <div class="bgcolor-white padding10X paddingX15 flex-align color-black borderbottom1">
-        <i class="marginright5 icon-egg the-color-blue fontsize2"></i>片尾有三个彩蛋，不要错过哦~
+      <div class="bgcolor-white padding10X paddingX15 flex-align color-black border-bottom1">
+        <i class="margin-right5 icon-egg color-blue font-size2"></i>片尾有三个彩蛋，不要错过哦~
       </div>
     </main>
-    <footer class="fixed bottom0 width100 the-bgcolor-red padding15X textAlignCenter color-white fontsize2">优惠购票</footer>
+    <footer class="fixed bottom0 width100 bgcolor-red padding15X text-align-center color-white font-size2">优惠购票</footer>
   </div>
 </template>
 <script>
@@ -51,7 +51,7 @@ export default {
     item: {}
   }),
   async onShow() {
-    this.item = JSON.parse(this.$root.$mp.query.data)
+    this.item = JSON.parse(this.$route.query.film)
   },
   methods: {
   },

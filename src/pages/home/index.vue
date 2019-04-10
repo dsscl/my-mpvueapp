@@ -2,33 +2,33 @@
   <div class="home clear">
     <main class="fixed top0 width100" style="height: calc(100% - 45px)">
       <scroll-view scroll-y style="height: 100%;" @scrolltolower="loadMore">
-        <header class="borderbottom1 flex-align-spacebetween" style="height: 40px">
-          <a class="flex-align paddingX10" href="/pages/selectCity/main">
+        <header class="border-bottom1 flex-align-spacebetween" style="height: 40px">
+          <a class="flex-align paddingX10" @tap="$router.push('selectCity')">
             {{curCity}}<i class="icon-uparrow rotate180 color-999"></i>
           </a>
-          <div class="fontsize1 bold flex-align">
+          <div class="font-size1 bold flex-align">
             <p :class="['headerTab', {'cur': headerTab===1}]" @tap="switchTab('header', 1)">热映</p>
             <p :class="['headerTab', {'cur': headerTab===2}]" @tap="switchTab('header', 2)">待映</p>
           </div>
-          <a href="/pages/search/main" class="height100 paddingleft10 paddingright15 borderleft1 flex-align-justify">
-            <i class="icon-search fontsize4 bold the-color-red"></i>
+          <a class="height100 padding-left10 padding-right15 borderleft1 flex-align-justify" @tap="$router.push('search')">
+            <i class="icon-search font-size4 bold color-red"></i>
           </a>
         </header>
         <film-list :ifList="ifList" :listData="listData" :isLoading="isLoading" :noMore="noMore"></film-list>
       </scroll-view>
     </main>
     <footer class="fixed bottom0 width100 padding5X bordertop1 bgcolor-white flex-align-spacebetween">
-      <div :class="['width33', 'textAlignCenter', footerTab===1 ? 'the-color-red':'color-999']" @tap="switchTab('footer', 1)">
-        <i class="icon-film fontsize5 bold"></i>
-        <p class="fontsize-1 margintop5">电影</p>
+      <div :class="['width33', 'text-align-center', footerTab===1 ? 'color-red':'color-999']" @tap="switchTab('footer', 1)">
+        <i class="icon-film font-size5 bold"></i>
+        <p class="font-size-1 margin-top5">电影</p>
       </div>
-      <div :class="['width33', 'textAlignCenter', footerTab===2 ? 'the-color-red':'color-999']" @tap="switchTab('footer', 2)">
-        <i class="icon-cinema fontsize5 bold"></i>
-        <p class="fontsize-1 margintop5">影院</p>
+      <div :class="['width33', 'text-align-center', footerTab===2 ? 'color-red':'color-999']" @tap="switchTab('footer', 2)">
+        <i class="icon-cinema font-size5 bold"></i>
+        <p class="font-size-1 margin-top5">影院</p>
       </div>
-      <div :class="['width33', 'textAlignCenter', footerTab===3 ? 'the-color-red':'color-999']" @tap="switchTab('footer', 3)">
-        <i class="icon-person fontsize5 bold"></i>
-        <p class="fontsize-1 margintop5">我的</p>
+      <div :class="['width33', 'text-align-center', footerTab===3 ? 'color-red':'color-999']" @tap="switchTab('footer', 3)">
+        <i class="icon-person font-size5 bold"></i>
+        <p class="font-size-1 margin-top5">我的</p>
       </div>
     </footer>
   </div>
@@ -51,7 +51,7 @@ export default {
   }),
   async onLoad() {
     this.listData.push(...resFilmData)
-    this.curCity = this.$root.$mp.query.city || '杭州'
+    this.curCity = this.$route.query.city || '杭州'
   },
   methods: {
     // tab切换
@@ -84,7 +84,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-$the-color-red: #f0423b;
+$color-red: #f0423b;
 .home {
   padding-bottom: 45px;
   .headerTab {
@@ -94,8 +94,8 @@ $the-color-red: #f0423b;
     color: 999;
     border-bottom: 1px solid transparent;
     &.cur {
-      color: $the-color-red;
-      border-color: $the-color-red;
+      color: $color-red;
+      border-color: $color-red;
     }
   }
 }

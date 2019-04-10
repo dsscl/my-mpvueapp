@@ -1,9 +1,13 @@
 // 初始化
 * {
   box-sizing: border-box;
+  transition: width 2s;
+  -moz-transition: width 2s;
+  -webkit-transition: width 2s;
+  -o-transition: width 2s;
 }
 body {
-  @extend .fontsize0;
+  font-size: 14px;
   font-family: "PingFangSC-Regular","microsoft yahei","Arial"!important;
 }
 input, {
@@ -24,6 +28,15 @@ i {
 a,a:hover,a:active,a:visited,a:link,a:focus{
   background: none;
 }
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
 
 [class *= 'btn-'] {
   display: inline-block;
@@ -32,10 +45,10 @@ a,a:hover,a:active,a:visited,a:link,a:focus{
   font-size: 12px;
   color: #fff;
   &.btn-blue {
-    background-color: $the-color-blue;
+    background-color: $color-blue;
   }
   &.btn-red {
-    background-color: $the-color-red;
+    background-color: $color-red;
   }
 }
 
