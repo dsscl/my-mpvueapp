@@ -1,6 +1,6 @@
 <template>
   <div class="home clear">
-    <main class="fixed top0 width100" style="height: calc(100% - 45px)">
+    <main class="fixed top0 width100" style="height: calc(100% - 2rpx)">
       <scroll-view scroll-y style="height: 100%;" @scrolltolower="loadMore">
         <header class="border-bottom1 flex-align-spacebetween" style="height: 40px">
           <a class="flex-align paddingX10" @tap="$router.push('selectCity')">
@@ -17,7 +17,7 @@
         <film-list :ifList="ifList" :listData="listData" :isLoading="isLoading" :noMore="noMore"></film-list>
       </scroll-view>
     </main>
-    <footer class="fixed bottom0 width100 padding5X bordertop1 bgcolor-white flex-align-spacebetween">
+    <!-- <footer class="fixed bottom0 width100 padding5X bordertop1 bgcolor-white flex-align-spacebetween">
       <div :class="['width33', 'text-align-center', footerTab===1 ? 'color-red':'color-999']" @tap="switchTab('footer', 1)">
         <i class="icon-film font-size5 bold"></i>
         <p class="font-size-1 margin-top5">电影</p>
@@ -30,7 +30,7 @@
         <i class="icon-person font-size5 bold"></i>
         <p class="font-size-1 margin-top5">我的</p>
       </div>
-    </footer>
+    </footer> -->
   </div>
 </template>
 <script>
@@ -86,7 +86,6 @@ export default {
 <style lang="scss" scoped>
 $color-red: #f0423b;
 .home {
-  padding-bottom: 45px;
   .headerTab {
     margin: 0 10px;
     height: 15px;

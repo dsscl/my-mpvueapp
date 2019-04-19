@@ -1,9 +1,34 @@
 {
-  "pages": ["pages/home/main", "pages/selectCity/main", "pages/search/main", "pages/filmDetail/main"],
+  "pages": [],
   "window": {
-    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#f0423b",
     "navigationBarTitleText": "猫眼电影",
     "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#f0423b",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "list": [
+        {
+            "pagePath": "pages/home",
+            "text": "首页",
+            "iconPath": "/static/img/film.png",
+            "selectedIconPath": "/static/img/film_active.png"
+        },
+        {
+            "pagePath": "pages/home",
+            "text": "消息",
+            "iconPath": "/static/img/cinema.png",
+            "selectedIconPath": "/static/img/cinema_active.png"
+        },
+        {
+            "pagePath": "pages/home",
+            "text": "个人中心",
+            "iconPath": "/static/img/personal.png",
+            "selectedIconPath": "/static/img/personal_active.png"
+        }
+    ]
   }
 }

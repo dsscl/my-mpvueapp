@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import MpvueRouterPatch from 'mpvue-router-patch'
 import App from './App'
-import '@/assets/icomoon/style.css'
+import '@/assets/iconfont/iconfont.css'
 import '@/assets/sass/sass_index.scss'
 
 Vue.config.productionTip = false
