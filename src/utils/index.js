@@ -23,8 +23,18 @@ function removeSpace (val) {
   return val.replace(reg, '')
 }
 
+const util = {
+  /*
+  * 无数据
+  **/
+  switchNodata(arr) {
+    return arr && arr.length > 0 ? false : true
+  }
+}
+
 module.exports = {
-  formatNumber: formatNumber,
-  formatTime: formatTime,
-  removeSpace: removeSpace
+  formatNumber,
+  formatTime,
+  removeSpace,
+  util
 }

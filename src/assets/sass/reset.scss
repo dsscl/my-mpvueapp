@@ -1,0 +1,30 @@
+// 初始化
+* {
+    box-sizing: border-box;
+    transition: width 2s;
+    -moz-transition: width 2s;
+    -webkit-transition: width 2s;
+    -o-transition: width 2s;
+  }
+  body {
+    font-size: 14px;
+    font-family: "PingFangSC-Regular","microsoft yahei","Arial"!important;
+  }
+  input, {
+    outline: none;
+  }
+  button {
+    border: none;
+    background: none;
+    outline: none;
+  }
+  ul,
+  li {
+    list-style: none;
+  }
+  i {
+    font-style: normal;
+  }
+  a,a:hover,a:active,a:visited,a:link,a:focus{
+    background: none;
+  }

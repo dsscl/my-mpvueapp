@@ -1,4 +1,5 @@
 {
+  "cloud": true,
   "pages": [],
   "window": {
     "navigationBarBackgroundColor": "#f0423b",
@@ -13,19 +14,19 @@
     "list": [
         {
             "pagePath": "pages/home",
-            "text": "首页",
+            "text": "电影",
             "iconPath": "/static/img/film.png",
             "selectedIconPath": "/static/img/film_active.png"
         },
         {
             "pagePath": "pages/home",
-            "text": "消息",
+            "text": "影院",
             "iconPath": "/static/img/cinema.png",
             "selectedIconPath": "/static/img/cinema_active.png"
         },
         {
             "pagePath": "pages/home",
-            "text": "个人中心",
+            "text": "我的",
             "iconPath": "/static/img/personal.png",
             "selectedIconPath": "/static/img/personal_active.png"
         }

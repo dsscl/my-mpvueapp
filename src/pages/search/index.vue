@@ -1,11 +1,11 @@
 <template>
   <div>
-    <header class="fixed top0 width100 bgcolor-bg" style="height: 50px">
+    <header class="fixed top0 width100 bgcolor-bg" style="height: 100rpx">
       <search :callbackUrl="'home'" :placeholder="'请输入片名'" @goSearch="goSearch"></search>
     </header>
-    <main class="fixed width100 bgcolor-white" style="top: 50px;height: calc(100% - 50px)">
+    <main class="fixed width100 bgcolor-white" style="top: 100rpx;height: calc(100% - 100rpx)">
       <scroll-view scroll-y style="height: 100%;" @scrolltolower="loadMore">
-        <film-list :listData="listData" :isLoading="isLoading" :noMore="noMore" :noData="noData"></film-list>
+        <film-list :mainList="mainList" :isLoading="isLoading" :noMore="noMore" :noData="noData"></film-list>
       </scroll-view>
     </main>
   </div>
@@ -13,46 +13,49 @@
 <script>
 import search from '@/components/search'
 import filmList from '@/components/filmList'
-import { resFilmData } from '@/utils/resData'
 export default {
   components: {
     search,
     filmList
   },
-  data: () => ({
-    listData: [],
-    isLoading: false,
-    noMore: false,
-    noData: false
-  }),
-  async onShow() {
-    this.listData = [],
+  data() {
+    return {
+      mainList: [],
+      isLoading: false,
+      noMore: false,
+      noData: false
+    }
+  },
+  onShow() {
+    this.mainList = [],
     this.noData = false
   },
   methods: {
     // 执行搜索
+    getList() {
+
+    },
     goSearch(val) {
-      if(val) {
-        let arr = []
-        resFilmData.map((item) => {
-          if(item.title.indexOf(val) !== -1) {
-            arr.push(item)
-          }
-        })
-        this.listData = arr
-        this.noData = true
-      } else {
-        this.noData = false
-        this.listData = []
-      }
+      // if(val) {
+      //   let arr = []
+      //   resFilmData.map((item) => {
+      //     if(item.title.indexOf(val) !== -1) {
+      //       arr.push(item)
+      //     }
+      //   })
+      //   this.mainList = arr
+      //   this.noData = true
+      // } else {
+      //   this.noData = false
+      //   this.mainList = []
+      // }
     },
     // 加载更多
     loadMore(e) {
-      if(this.listData.length < 10) {
+      if(this.mainList.length < 10) {
         this.isLoading = true
         setTimeout(() => {
-          this.isLoading = false
-          this.listData.push(...resFilmData)
+          // this.getList(false)
         }, 1000)
       } else {
         this.noMore = true

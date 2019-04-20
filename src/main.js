@@ -2,7 +2,8 @@ import Vue from 'vue'
 import MpvueRouterPatch from 'mpvue-router-patch'
 import App from './App'
 import WXP from '@/utils/wxp'
-import store from '@/store/index'
+import store from '@/store'
+import {util} from '@/utils'
 import '@/assets/iconfont/iconfont.css'
 import '@/assets/sass/sass_index.scss'
 
@@ -16,8 +17,9 @@ wx.cloud.init({
 
 Vue.prototype.WXP = WXP
 Vue.prototype.$store = store
+Vue.prototype.$util = util
 Vue.prototype.db = wx.cloud.database({
-  env: 'dev'
+  env: 'dev-727957'
 })
 const app = new Vue(App)
 app.$mount()

@@ -1,9 +1,9 @@
 <template>
   <div>
-    <ul v-if="ifList" class="padding-left10">
-      <li v-for="(item, index) in listData" :key="index" class="width100 padding10X border-bottom1 flex" @tap="clickItem(item)">
+    <ul class="padding-left10">
+      <li v-for="(item, index) in mainList" :key="index" class="width100 padding10X border-bottom1 flex" @tap="clickItem(item)">
         <div class="posterSize itemflex-00auto relative">
-          <img :src="item.poster" class="posterSize"/>
+          <image :src="item.poster" class="posterSize" :lazy-load="true"></image>
           <i class="icon-video font-size6 color-white absolute translateXY"></i>
         </div>
         <div class="margin-left10 width100 padding-right10">
@@ -31,7 +31,7 @@
       </li>
       <li v-show="isLoading" class="padding-top10 padding-bottom20 text-align-center color-999">加载中<i class="icon-loading"></i></li>
       <li v-show="noMore" class="padding-top10 padding-bottom20 text-align-center color-999">没有更多啦~</li>
-      <li v-show="noData && listData.length===0" class="padding-top10 padding-bottom20 text-align-center color-999">暂无数据</li>
+      <li v-show="noData && mainList.length===0" class="padding-top10 padding-bottom20 text-align-center color-999">暂无数据</li>
     </ul>
   </div>
 </template>
@@ -52,11 +52,7 @@ export default {
     }
   },
   props: {
-    ifList: {
-      type: Boolean,
-      default: true
-    },
-    listData: {
+    mainList: {
       type: Array,
       default: [],
       required: true
