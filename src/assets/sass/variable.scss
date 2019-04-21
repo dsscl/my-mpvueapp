@@ -3,12 +3,15 @@ $color-red: #f0423b;
 $color-blue: #55b1e8;
 $color-orange: #ff8100;
 $color-yellow: #feb500;
+$color-green: #32AE57;
 $color-bg: #F7F7F7;
 $thecolors:
 (red, $color-red),
 (blue, $color-blue),
 (orange, $color-orange),
-(yellow, $color-yellow);
+(yellow, $color-yellow),
+(green, $color-green),
+(bg, $color-bg);
 @each $name,
 $color in $thecolors {
   .color-#{$name} {

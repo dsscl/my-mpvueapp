@@ -1,3 +1,6 @@
+/*
+* 将小程序api方法封装为异步形式
+**/
 function f (func, obj) {
   return new Promise((resolve, reject) => {
     func({

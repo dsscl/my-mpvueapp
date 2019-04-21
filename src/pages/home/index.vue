@@ -3,7 +3,7 @@
     <main class="fixed top0 width100" style="height: calc(100% - 2rpx)">
       <scroll-view scroll-y style="height: 100%;" @scrolltolower="loadMore">
         <header class="border-bottom1 flex-align-spacebetween" style="height: 40px">
-          <a class="flex-align paddingX10" @tap="$router.push('select_city')">
+          <a class="flex-align paddingX10" @tap="$router.push('/pages/select_city')">
             {{curCity}}<i class="icon-uparrow rotate180 color-999"></i>
           </a>
           <div class="font-size1 bold flex-align">
@@ -43,11 +43,11 @@ export default {
     this.getList(true)
   },
   methods: {
-    switchTab(type, val) {
+    switchTab(type, v) {
       if(type === 'header') {
-        this.headerTab = val
+        this.headerTab = v
       } else {
-        this.footerTab = val
+        this.footerTab = v
       }
       this.getList(true)
     },

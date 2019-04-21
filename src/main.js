@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import MpvueRouterPatch from 'mpvue-router-patch'
 import App from './App'
-import WXP from '@/utils/wxp'
 import store from '@/store'
 import * as types from '@/store/mutation_types'
 import util from '@/utils'
@@ -16,7 +15,6 @@ wx.cloud.init({
     traceUser: true
 })
 
-Vue.prototype.WXP = WXP
 // vuex数据状态管理
 Vue.prototype.$store = store
 // vuex mutations常量集合
