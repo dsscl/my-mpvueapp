@@ -50,7 +50,7 @@ export default {
   data: () => ({
     item: {}
   }),
-  async onShow() {
+  onShow() {
     this.item = JSON.parse(this.$route.query.film)
   },
   methods: {

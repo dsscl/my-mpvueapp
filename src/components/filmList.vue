@@ -29,9 +29,8 @@
           <div class="color-999 line-ellipsis">今天{{item.cinema}}家影院放映{{item.field}}场</div>
         </div>
       </li>
-      <li v-show="isLoading" class="padding-top10 padding-bottom20 text-align-center color-999">加载中<i class="icon-loading"></i></li>
-      <li v-show="noMore" class="padding-top10 padding-bottom20 text-align-center color-999">没有更多啦~</li>
-      <li v-show="noData && mainList.length===0" class="padding-top10 padding-bottom20 text-align-center color-999">暂无数据</li>
+      <li v-if="noMore" class="padding-top10 padding-bottom20 text-align-center color-999">没有更多啦~</li>
+      <li v-else-if="noData" class="padding-top10 padding-bottom20 text-align-center color-999">暂无数据</li>
     </ul>
   </div>
 </template>
@@ -56,10 +55,6 @@ export default {
       type: Array,
       default: [],
       required: true
-    },
-    isLoading: {
-      type: Boolean,
-      default: false
     },
     noMore: {
       type: Boolean,

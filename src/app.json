@@ -25,7 +25,7 @@
             "selectedIconPath": "/static/img/cinema_active.png"
         },
         {
-            "pagePath": "pages/home",
+            "pagePath": "pages/personal",
             "text": "我的",
             "iconPath": "/static/img/personal.png",
             "selectedIconPath": "/static/img/personal_active.png"

@@ -8,9 +8,12 @@
 		"newFeature": true
 	},
 	"miniprogramRoot": "./dist/",
+	"cloudfunctionRoot": "./static/cloudfunctions/",
 	"compileType": "miniprogram",
-	"appid": "y",
+	"appid": "wx01d071fbf6dac44c",
 	"projectname": "y",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,

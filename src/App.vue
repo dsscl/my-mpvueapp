@@ -1,12 +1,20 @@
 <script>
 export default {
-  created () {
-    // 调用API从本地缓存中获取数据
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+  onLaunch () {
+    // 获取openId
+    wx.cloud.callFunction({ name: 'login' }).then(res => {
+      this.$store.commit(this.$types.SET_OPEN_ID, res.result.openid)
+    }).catch(err => console.error(err))
 
-    console.log('app created and cache logs by setStorageSync')
+    this.WXP.getSetting().then(res => {
+      if (res.authSetting['scope.userInfo']) {
+        wx.getUserInfo({
+          success: res => {
+            this.$store.commit(this.$types.SET_USER_INFO, res.userInfo)
+          }
+        })
+      }
+    })
   }
 }
 </script>

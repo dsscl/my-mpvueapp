@@ -9,8 +9,8 @@
   </div>
 </template>
 <script>
-import { removeSpace } from '@/utils'
 export default {
+  props: ['placeholder'],
   data: () => ({
     keyword: '',
     isChanged: false
@@ -22,13 +22,13 @@ export default {
   },
   watch: {
     keyword(val, oldVal) {
-      if(removeSpace(val) !== removeSpace(oldVal)) {
+      if(this.$util.removeSpace(val) !== this.$util.removeSpace(oldVal)) {
         this.isChanged = true
       }
     }
   },
-  async onLoad() {
-    this.keyword = ''
+  onLoad() {
+    Object.assign(this, this.$options.data())
   },
   methods: {
     // 监听搜索框变化
@@ -37,12 +37,12 @@ export default {
     },
     // 执行搜索
     goSearch() {
-      if(this.isChanged) {
-        if(this.keyword) {
-          this.$emit('goSearch', removeSpace(this.keyword))
-        } else {
-          this.$router.push(callbackUrl)
+      if(this.keyword) {
+        if(this.isChanged) {
+          this.$emit('goSearch', this.$util.removeSpace(this.keyword))
         }
+      } else {
+        this.$router.back()
       }
       this.isChanged = false
     },
@@ -51,8 +51,7 @@ export default {
       this.keyword = ''
       this.$emit('goSearch', this.keyword)
     }
-  },
-  props: ['callbackUrl', 'placeholder']
+  }
 }
 </script>
 <style lang="scss" scoped>

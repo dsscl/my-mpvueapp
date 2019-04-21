@@ -12,11 +12,11 @@
         <div v-if="!onlyShowList" class="line-height20" style="padding: 12px 15px 8px 15px">{{item.title}}</div>
         <div v-if="item.type && item.type === 'group' && !onlyShowList" class="bgcolor-white padding10X padding-left15 padding-right40">
           <p v-for="(jitem, j) in item.data" :key="j">
-            <a @tap="$router.push({path: callbackUrl, query: {city: kitem.city}})"  v-for="(kitem, k) in jitem" :key="k" class="inline-block keywordOption">{{kitem.city}}</a>
+            <a @tap="switchCity(kitem.city)"  v-for="(kitem, k) in jitem" :key="k" class="inline-block keywordOption">{{kitem.city}}</a>
           </p>
         </div>
         <div v-if="item.type ==='list'" class="bgcolor-white padding-left15 padding-right40">
-          <a @tap="$router.push({path: callbackUrl, query: {city: jitem.city}})" v-for="(jitem, j) in item.data" :key="j" class="border-bottom1 line-height40">{{jitem.city}}</a>
+          <a @tap="switchCity(jitem.city)" v-for="(jitem, j) in item.data" :key="j" class="border-bottom1 line-height40">{{jitem.city}}</a>
         </div>
       </section>
     </scroll-view>
@@ -49,12 +49,16 @@ export default {
       return Format.totalList(cityList, hotList, locateList);
     }
   },
-  data: () => ({
-    toView: ''
-  }),
-  async onLoad() {
+  data() {
+    return {
+      toView: ''
+    }
   },
   methods: {
+    switchCity(v) {
+      this.$store.commit(this.$types.SET_CITY, v)
+      this.$router.back()
+    },
     // 滚动条移动到指定索引
     gotoIndex (key) {
       if(key === '定位') {

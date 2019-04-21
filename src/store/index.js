@@ -1,26 +1,31 @@
-import Vuex from 'vuex'
 import Vue from 'vue'
+import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate' // 引入vuex-persistedstate，将vuex的数据持久化到本地
+
+import state from './state'
+import mutations from './mutations'
+import actions from './actions'
+import getters from './getters'
 
 Vue.use(Vuex)
 
-const store = new Vuex.Store({
-  state: {
-    openId: '',
-    authUserInfo: false
-  },
-  getters: {
-    isLogin: (state) => {
-      return state.authUserInfo && !!state.openId
-    }
-  },
-  mutations: {
-    updateOpenId (state, openId) {
-      state.openId = openId
-    },
-    updateAuthUserInfo (state, authUserInfo) {
-      state.authUserInfo = authUserInfo
-    }
-  }
+export default new Vuex.Store({
+  state,
+  mutations,
+  getters,
+  actions,
+  plugins: [
+    createPersistedState({
+      storage: { // 将数据持久化到wx.storage
+        getItem: key => wx.getStorageSync(key),
+        setItem: (key, value) => wx.setStorageSync(key, value),
+        removeItem: key => wx.removeStorageSync(key)
+      },
+      reducer: val => { // 只储存state中的部分数据
+        return {
+          // appId: val.appId,
+        }
+      }
+    })
+  ]
 })
-
-export default store

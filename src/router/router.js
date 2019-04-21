@@ -27,4 +27,10 @@ module.exports = [{
   config: {
     navigationBarTitleText: '影片详情'
   }
+}, {
+  path: 'pages/personal',
+  name: 'personal',
+  config: {
+    navigationBarTitleText: '我的'
+  }
 }]

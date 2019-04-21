@@ -14,14 +14,16 @@
             <i class="icon-search font-size4 bold color-red"></i>
           </a>
         </header>
-        <film-list :mainList="mainList" :isLoading="isLoading" :noMore="noMore"></film-list>
+        <film-list :mainList="mainList" :noMore="noMore" :noData="noData"></film-list>
       </scroll-view>
     </main>
   </div>
 </template>
 <script>
 import filmList from '@/components/filmList'
+import {FILM_LIST} from '@/mixin'
 export default {
+  mixins: [FILM_LIST],
   components: {
     filmList
   },
@@ -29,33 +31,18 @@ export default {
     return {
       headerTab: 1,
       footerTab: 1,
-      curCity: '',
-      mainList: [],
-      isLoading: false,
-      noMore: false
+    }
+  },
+  computed: {
+    curCity() {
+      return this.$store.state.city
     }
   },
   onLoad() {
+    Object.assign(this, this.$options.data())
     this.getList(true)
-    this.curCity = this.$route.query.city || '杭州'
   },
   methods: {
-    getList(isRefresh) {
-      if(isRefresh) {
-        this.mainList = []
-      }
-      this.db.collection('films').get({
-        success: res => {
-          this.mainList.push(...res.data)
-        },
-        fail: err => {
-          wx.showToast({
-            icon: 'none',
-            title: '列表加载失败'
-          })
-        }
-      })
-    },
     switchTab(type, val) {
       if(type === 'header') {
         this.headerTab = val
@@ -64,17 +51,6 @@ export default {
       }
       this.getList(true)
     },
-    loadMore(e) {
-      if(this.mainList.length < 40) {
-        this.isLoading = true
-        setTimeout(() => {
-          this.isLoading = false
-          this.getList(false)
-        }, 1000)
-      } else {
-        this.noMore = true
-      }
-    }
   }
 }
 </script>
