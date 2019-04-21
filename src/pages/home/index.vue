@@ -3,7 +3,7 @@
     <main class="fixed top0 width100" style="height: calc(100% - 2rpx)">
       <scroll-view scroll-y style="height: 100%;" @scrolltolower="loadMore">
         <header class="border-bottom1 flex-align-spacebetween" style="height: 40px">
-          <a class="flex-align paddingX10" @tap="$router.push('selectCity')">
+          <a class="flex-align paddingX10" @tap="$router.push('select_city')">
             {{curCity}}<i class="icon-uparrow rotate180 color-999"></i>
           </a>
           <div class="font-size1 bold flex-align">
@@ -14,13 +14,13 @@
             <i class="icon-search font-size4 bold color-red"></i>
           </a>
         </header>
-        <film-list :mainList="mainList" :noMore="noMore" :noData="noData"></film-list>
+        <film-list :mainList="mainList" :nodata="nodata"></film-list>
       </scroll-view>
     </main>
   </div>
 </template>
 <script>
-import filmList from '@/components/filmList'
+import filmList from '@/components/film_list'
 import {FILM_LIST} from '@/mixin'
 export default {
   mixins: [FILM_LIST],

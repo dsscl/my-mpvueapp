@@ -2,10 +2,10 @@ export const FILM_LIST = {
     data() {
         return {
             mainList: [],
-            noMore: false,
-            noData: false,
+            nodata: false,
             pageNo: 1,
-            pageSize: 10
+            pageSize: 6,
+            hasMore: true
         }
     },
     methods: {
@@ -28,17 +28,15 @@ export const FILM_LIST = {
                 },
             }).then(res => {
                 console.log(res)
-                if(res.result.data.length < this.pageSize) {
-                    this.noMore = true
-                }
+                this.hasMore = res.result.data.length < this.pageSize ? false : true
                 this.mainList.push(...res.result.data)
-                this.noData = this.$util.switchNodata(this.mainList)
+                this.nodata = this.$util.switchNodata(this.mainList)
                 wx.hideLoading()
             })
         },
         loadMore() {
-            if(!this.noMore) {
-                this.getList(false)
+            if(this.hasMore) {
+                this.getList(false, this.keyWord)
             }
         }
     }

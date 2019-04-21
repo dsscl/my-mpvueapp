@@ -10,8 +10,8 @@ module.exports = [{
     // }
   }
 }, {
-  path: 'pages/selectCity',
-  name: 'selectCity',
+  path: 'pages/select_city',
+  name: 'select_city',
   config: {
     navigationBarTitleText: '选择城市'
   }
@@ -22,8 +22,8 @@ module.exports = [{
     navigationBarTitleText: '搜索'
   }
 }, {
-  path: 'pages/filmDetail',
-  name: 'filmDetail',
+  path: 'pages/film_detail',
+  name: 'film_detail',
   config: {
     navigationBarTitleText: '影片详情'
   }

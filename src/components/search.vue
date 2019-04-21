@@ -11,10 +11,12 @@
 <script>
 export default {
   props: ['placeholder'],
-  data: () => ({
-    keyword: '',
-    isChanged: false
-  }),
+  data() {
+    return {
+      keyword: '',
+      isChanged: false
+    }
+  },
   computed: {
     operateText() {
       return this.keyword ? '搜索' : '取消'
