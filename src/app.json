@@ -19,7 +19,7 @@
             "selectedIconPath": "/static/img/film_active.png"
         },
         {
-            "pagePath": "pages/home",
+            "pagePath": "pages/cinema",
             "text": "影院",
             "iconPath": "/static/img/cinema.png",
             "selectedIconPath": "/static/img/cinema_active.png"

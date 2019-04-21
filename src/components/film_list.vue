@@ -7,7 +7,7 @@
           <image :src="item.poster" class="posterSize" :lazy-load="true"></image>
           <i class="icon-video font-size6 color-white absolute translateXY"></i>
         </div>
-        <div class="margin-left10 width100 padding-right10">
+        <div class="width100 paddingX10">
           <div class="flex-align-spacebetween">
             <p class="flex-align" style="width: 65%">
               <span class="color-333 font-size2 line-ellipsis">{{item.title}}</span>
@@ -20,12 +20,10 @@
             </p>
           </div>
           <div class="margin-top5 color-666 line-ellipsis">{{item.type}}</div>
-          <div class="color-666 flex-align-spacebetween">
-            <p class="line-ellipsis" style="width: 83%">{{item.actor}}</p>
-            <p>
-              <button v-if="item.isShow" class="btn-red">购票</button>
-              <button v-else class="btn-blue">预售</button>
-            </p>
+          <div class="width100 color-666 flex-align-spacebetween">
+            <p class="line-ellipsis" style="width: 70%">{{item.actor}}</p>
+            <button v-if="item.isShow" class="itemflex-00auto btn-red marginX0">购票</button>
+            <button v-else class="itemflex-00auto btn-blue marginX0">预售</button>
           </div>
           <div class="color-999 line-ellipsis">今天{{item.cinema}}家影院放映{{item.field}}场</div>
         </div>

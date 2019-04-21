@@ -27,7 +27,6 @@ export const FILM_LIST = {
                   pageSize: this.pageSize
                 },
             }).then(res => {
-                console.log(res)
                 this.hasMore = res.result.data.length < this.pageSize ? false : true
                 this.mainList.push(...res.result.data)
                 this.nodata = this.$util.switchNodata(this.mainList)

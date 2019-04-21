@@ -6,7 +6,7 @@
             <open-data type="userNickName" class="margin-top10"></open-data>
         </div>
         <div v-else class="height100 flex-align-justify">
-            <div class="user-avatar"></div>
+            <div class="icon-cat default-avatar"></div>
         </div>
     </section>
     <section v-if="!isLogin" class="the-mask">
@@ -44,5 +44,12 @@ export default {
     overflow: hidden;
     border: 1px solid #fff;
     box-shadow: 0 0 10rpx gray;
+}
+.default-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    font-size: 80px;
+    border: 1px solid #fff;
 }
 </style>

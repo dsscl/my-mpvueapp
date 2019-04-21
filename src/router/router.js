@@ -10,6 +10,18 @@ module.exports = [{
     // }
   }
 }, {
+  path: 'pages/cinema',
+  name: 'cinema',
+  config: {
+    navigationBarTitleText: '影院'
+  }
+}, {
+  path: 'pages/personal',
+  name: 'personal',
+  config: {
+    navigationBarTitleText: '我的'
+  }
+}, {
   path: 'pages/select_city',
   name: 'select_city',
   config: {
@@ -28,9 +40,9 @@ module.exports = [{
     navigationBarTitleText: '影片详情'
   }
 }, {
-  path: 'pages/personal',
-  name: 'personal',
+  path: 'pages/web_view',
+  name: 'web_view',
   config: {
-    navigationBarTitleText: '我的'
+    navigationBarTitleText: '网页'
   }
 }]

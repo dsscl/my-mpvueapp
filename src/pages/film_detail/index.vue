@@ -47,13 +47,14 @@
 </template>
 <script>
 export default {
-  data: () => ({
-    item: {}
-  }),
-  onShow() {
-    this.item = JSON.parse(this.$route.query.film)
+  data() {
+    return {
+      item: {}
+    }
   },
-  methods: {
+  onLoad() {
+    // this.item = this.$root.$mp.query.film
+    this.item = JSON.parse(this.$route.query.film)
   },
 }
 </script>
