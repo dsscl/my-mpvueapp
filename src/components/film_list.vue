@@ -21,7 +21,7 @@
           </div>
           <div class="margin-top5 color-666 line-ellipsis">{{item.type}}</div>
           <div class="width100 color-666 flex-align-spacebetween">
-            <p class="line-limited1" style="width: 70%">{{item.actor}}</p>
+            <p class="line-limited1 width75">{{item.actor}}</p>
             <button v-if="item.isShow" class="itemflex-00auto btn-red marginX0">购票</button>
             <button v-else class="itemflex-00auto btn-blue marginX0">预售</button>
           </div>
