@@ -5,6 +5,9 @@ const mutations = {
   [types.SET_OPEN_ID] (state, v) {
     state.openId = v
   },
+  [types.SET_UNION_ID] (state, v) {
+    state.unionId = v
+  },
   [types.SET_USER_INFO] (state, v) {
     state.userInfo = v
   },

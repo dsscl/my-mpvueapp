@@ -23,7 +23,10 @@ export default new Vuex.Store({
       },
       reducer: val => { // 只储存state中的部分数据
         return {
-          // appId: val.appId,
+          appId: val.appId,
+          openId: val.openId,
+          unionId: val.unionId,
+          userInfo: val.userInfo,
         }
       }
     })
