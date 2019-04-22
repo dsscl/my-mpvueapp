@@ -33,6 +33,11 @@ export default {
                     wx.cloud.callFunction({ name: 'login' })
                     .then(res1 => {
                         console.log('登录云函数返回值------', res1)
+                        wx.showToast({
+                            title: '登录成功',
+                            icon: 'success',
+                            duration: 2000
+                        })
                         this.$store.commit(this.$types.SET_OPEN_ID, res1.result.openid)
                         this.$store.commit(this.$types.SET_USER_INFO, res.userInfo)
                     })
