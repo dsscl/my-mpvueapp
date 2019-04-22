@@ -1,6 +1,6 @@
 import store from '@/store'
 import * as types from '@/store/mutation-types'
-import { login } from '@/utils/business'
+import { login } from '@/utils/login'
 import { apis } from './api'
 
 const setURL = (url, args) => {

@@ -39,7 +39,7 @@ export default {
       this.$router.push({
         path: 'film_detail',
         query: {
-          film: JSON.stringify(obj)
+          film: encodeURIComponent(JSON.stringify(obj))
         }
       })
     }

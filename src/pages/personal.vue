@@ -29,7 +29,14 @@ export default {
         getUserInfo (e) {
             wx.getUserInfo({
                 success: res => {
-                    this.$store.commit(this.$types.SET_USER_INFO, res.userInfo)
+                    // 登录
+                    wx.cloud.callFunction({ name: 'login' })
+                    .then(res1 => {
+                        console.log('登录云函数返回值------', res1)
+                        this.$store.commit(this.$types.SET_OPEN_ID, res1.result.openid)
+                        this.$store.commit(this.$types.SET_USER_INFO, res.userInfo)
+                    })
+                    .catch(err => console.error(err))
                 }
             })
         }

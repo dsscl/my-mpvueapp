@@ -6,7 +6,7 @@
           <div class="posterSize itemflex-00auto relative">
             <i class="icon-video font-size6 color-666 absolute translateXY"></i>
           </div>
-          <div class="margin-left10 width100 padding-right10">
+          <div class="paddingX10 width100">
             <div class="flex-align-spacebetween">
               <p class="flex-align" style="width: 65%">
                 <span class="font-size2 line-ellipsis">{{item.title}}</span>
@@ -53,8 +53,7 @@ export default {
     }
   },
   onLoad() {
-    // this.item = this.$root.$mp.query.film
-    this.item = JSON.parse(this.$route.query.film)
+    this.item = JSON.parse(decodeURIComponent(this.$route.query.film))
   },
 }
 </script>
