@@ -3,8 +3,9 @@
     <main>
       <section class="introWrap border-bottom1">
         <div class="flex-align">
-          <div class="posterSize itemflex-00auto relative">
-            <i class="icon-video font-size12 color-666 absolute translateXY"></i>
+          <div class="posterSize itemflex-00auto relative" style="border: 2rpx solid #666;">
+            <image v-if="item.poster" :src="item.poster" class="posterSize"></image>
+            <i v-else class="icon-video font-size12 color-666 absolute translateXY"></i>
           </div>
           <div class="paddingX20 width100">
             <div class="flex-align-spacebetween">
@@ -65,7 +66,6 @@ export default {
   .posterSize {
     width: 160rpx;
     height: 210rpx;
-    border: 2rpx solid #666;
   }
   .icon-3DIMAX {
     color: #fff;
