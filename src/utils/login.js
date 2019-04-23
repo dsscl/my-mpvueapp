@@ -1,3 +1,6 @@
+/**
+ * 登录相关代码，仅供参考
+ */
 import { post, apis } from '@/request'
 import store from '@/store'
 import * as types from '@/store/mutation-types'

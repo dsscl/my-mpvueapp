@@ -40,6 +40,11 @@ wx.cloud.init({
 "cloudfunctionRoot": "./static/cloudfunctions/",
 ```
 
-### 4. 参考文档
+### 4. 项目中可复用的地方
+1）样式，"/src/assets/sass/global.scss"，总结了最常使用的原子、分子样式，便于排列组合成各种布局和样式<br>
+2）vuex全局数据 & 数据持久化，"/src/store/index.js"，引入'vuex-persistedstate'，优雅地将数据进行持久化存储（兼容各种web存储）<br>
+3）请求，"/src/request/index.js"，根据具体业务进行的请求封装，供参考
+
+### 5. 云开发参考文档
 [mpvue中使用小程序云开发总结](https://segmentfault.com/a/1190000016641238)
 

@@ -16,12 +16,13 @@ export default new Vuex.Store({
   actions,
   plugins: [
     createPersistedState({
-      storage: { // 将数据持久化到wx.storage
+      // storage: window.sessionStorage, // 将数据持久化到sessionStorage（web存储）
+      storage: { // 将数据持久化到wx.storage（小程序存储）
         getItem: key => wx.getStorageSync(key),
         setItem: (key, value) => wx.setStorageSync(key, value),
         removeItem: key => wx.removeStorageSync(key)
       },
-      reducer: val => { // 只储存state中的部分数据
+      reducer: val => { // state中需要持久化的数据
         return {
           appId: val.appId,
           openId: val.openId,

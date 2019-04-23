@@ -39,6 +39,7 @@ export default {
                             duration: 2000
                         })
                         this.$store.commit(this.$types.SET_OPEN_ID, res1.result.openid)
+                        this.$store.commit(this.$types.SET_UNION_ID, res1.result.unionid)
                         this.$store.commit(this.$types.SET_USER_INFO, res.userInfo)
                     })
                     .catch(err => console.error(err))
