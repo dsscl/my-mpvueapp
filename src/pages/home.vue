@@ -7,8 +7,8 @@
             {{curCity}}<i class="icon-uparrow rotate180 color-999"></i>
           </a>
           <div class="font-size2 bold flex-align">
-            <p :class="['headerTab', {'cur': headerTab===1}]" @tap="switchTab('header', 1)">热映</p>
-            <p :class="['headerTab', {'cur': headerTab===2}]" @tap="switchTab('header', 2)">待映</p>
+            <p :class="['headerTab', {'cur': headerTab===1}]" @tap="switchTab(1)">热映</p>
+            <p :class="['headerTab', {'cur': headerTab===2}]" @tap="switchTab(2)">待映</p>
           </div>
           <a class="height100 padding-left20 padding-right30 border-left1 flex-align-justify" @tap="$router.push('search')">
             <i class="icon-search font-size8 bold color-red"></i>
@@ -30,7 +30,6 @@ export default {
   data() {
     return {
       headerTab: 1,
-      footerTab: 1,
     }
   },
   computed: {
@@ -40,16 +39,12 @@ export default {
   },
   onLoad() {
     Object.assign(this, this.$options.data())
-    this.getList(true)
+    this.getList({isRefresh: true})
   },
   methods: {
-    switchTab(type, v) {
-      if(type === 'header') {
-        this.headerTab = v
-      } else {
-        this.footerTab = v
-      }
-      this.getList(true)
+    switchTab(v) {
+      this.headerTab = v
+      this.headerTab === 2 ? this.getList({isRefresh: true, isShow: 0}) : this.getList({isRefresh: true})
     },
   }
 }

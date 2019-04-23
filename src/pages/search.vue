@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     goSearch(v) {
-      this.getList(true, v)
+      this.getList({isRefresh: true, keyWord: v})
     }
   }
 }

@@ -9,7 +9,7 @@ export const FILM_LIST = {
         }
     },
     methods: {
-        getList(isRefresh, v='') {
+        getList({isRefresh, isShow, keyWord=''}) {
             wx.showLoading({
                 title: '加载中'
             })
@@ -22,7 +22,8 @@ export const FILM_LIST = {
             wx.cloud.callFunction({
                 name: 'films',
                 data: {
-                  keyWord: v,
+                  isShow: isShow,
+                  keyWord: keyWord,
                   pageNo: this.pageNo,
                   pageSize: this.pageSize
                 },
@@ -35,7 +36,7 @@ export const FILM_LIST = {
         },
         loadMore() {
             if(this.hasMore) {
-                this.getList(false, this.keyWord)
+                this.getList({isRefresh: false, keyWord: this.keyWord})
             }
         }
     }
