@@ -1,6 +1,6 @@
 <template>
-  <div class="paddingX20 flex-align" style="height: 100vh">
-    <button type="warn" class="width100 border-radius8" @tap="jumpH5">云开发</button>
+  <div class="paddingX40 flex-align" style="height: 100vh">
+    <button type="warn" class="width100 border-radius16" @tap="jumpH5">云开发</button>
   </div>
 </template>
 <script>

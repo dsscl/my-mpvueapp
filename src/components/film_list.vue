@@ -1,25 +1,25 @@
 <template>
   <div>
-    <li v-if="nodata" class="padding-top10 padding-bottom20 text-align-center color-999">暂无数据</li>
-    <ul class="padding-left10">
-      <li v-for="(item, index) in mainList" :key="index" class="width100 padding10X border-bottom1 flex" @tap="clickItem(item)">
+    <li v-if="nodata" class="padding-top20 padding-bottom40 text-align-center color-999">暂无数据</li>
+    <ul class="padding-left20">
+      <li v-for="(item, index) in mainList" :key="index" class="width100 padding20X border-bottom1 flex" @tap="clickItem(item)">
         <div class="posterSize itemflex-00auto relative">
           <image :src="item.poster" class="posterSize" :lazy-load="true"></image>
-          <i class="icon-video font-size6 color-white absolute translateXY"></i>
+          <i class="icon-video font-size12 color-white absolute translateXY"></i>
         </div>
-        <div class="width100 paddingX10">
+        <div class="width100 paddingX20">
           <div class="flex-align-spacebetween">
             <p class="flex-align" style="width: 65%">
-              <span class="color-333 font-size2 line-ellipsis">{{item.title}}</span>
-              <span v-if="item.is3D" class="margin-left5 icon-3DIMAX itemflex-00auto"></span>
+              <span class="color-333 font-size4 line-ellipsis">{{item.title}}</span>
+              <span v-if="item.is3D" class="margin-left10 icon-3DIMAX itemflex-00auto"></span>
             </p>
-            <p class="padding-left5 itemflex-00auto color-yellow" style="max-width: 35%">
-              <span v-if="item.expect">{{item.expect}}<span class="font-size-4">人想看</span></span>
-              <span v-else-if="item.score">{{item.score}}<span class="font-size-4">分</span></span>
-              <span v-else class="font-size-2 color-999">暂无评分</span>
+            <p class="padding-left10 itemflex-00auto color-yellow" style="max-width: 35%">
+              <span v-if="item.expect">{{item.expect}}<span class="font-size-8">人想看</span></span>
+              <span v-else-if="item.score">{{item.score}}<span class="font-size-8">分</span></span>
+              <span v-else class="font-size-4 color-999">暂无评分</span>
             </p>
           </div>
-          <div class="margin-top5 color-666 line-ellipsis">{{item.type}}</div>
+          <div class="margin-top10 color-666 line-ellipsis">{{item.type}}</div>
           <div class="width100 color-666 flex-align-spacebetween">
             <p class="line-limited1 width75">{{item.actor}}</p>
             <button v-if="item.isShow" class="itemflex-00auto btn-red marginX0">购票</button>
@@ -59,13 +59,13 @@ export default {
 </script>
 <style lang="scss" scoped>
   .icon-3DIMAX {
-    height: 20px;
-    line-height: 20px;
-    font-size: 32px;
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 64rpx;
     color: #78abca;
   }
   .posterSize {
-    width: 70px;
-    height: 95px;
+    width: 140rpx;
+    height: 190rpx;
   }
 </style>

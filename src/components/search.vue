@@ -58,8 +58,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .search {
-  padding: 10px 15px;
-  font-size: 15px;
+  padding: 20rpx 30rpx;
+  font-size: 30rpx;
   .inputWrap {
     position: relative;
     width: 85%;
@@ -71,16 +71,16 @@ export default {
       transform: translateY(-50%);
     }
     .icon-search {
-      left: 10px;
+      left: 20rpx;
     }
     .icon-clear {
-      right: 10px;
+      right: 20rpx;
     }
     .searchInput {
-      padding: 5px 30px;
-      line-height: 20px;
-      border: 1px solid #e6e6e6;
-      border-radius: 4px;
+      padding: 10rpx 60rpx;
+      line-height: 40rpx;
+      border: 2rpx solid #e6e6e6;
+      border-radius: 8rpx;
       background-color: #fff;
     }
   }

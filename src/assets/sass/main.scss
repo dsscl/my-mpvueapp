@@ -1,8 +1,8 @@
 [class *= 'btn-'] {
   display: inline-block;
-  line-height: 20px;
-  padding: 4px 10px;
-  font-size: 12px;
+  line-height: 40rpx;
+  padding: 8rpx 20rpx;
+  font-size: 24rpx;
   color: #fff;
   &.btn-blue {
     background-color: $color-blue;
@@ -23,12 +23,12 @@
 }
 
 .icon-loading{
-  margin-left: 5px;
+  margin-left: 10rpx;
   display: inline-block;
-  height: 10px;
-  width: 10px;
+  height: 20rpx;
+  width: 20rpx;
   border-radius: 100%;
-  border: 3px solid #999;
+  border: 6rpx solid #999;
   border-bottom-color: transparent;
   vertical-align: middle;
   -webkit-animation: rotate 0.75s linear infinite;

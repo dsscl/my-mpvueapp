@@ -2,16 +2,16 @@
   <div class="home clear">
     <main class="fixed top0 width100" style="height: calc(100% - 2rpx)">
       <scroll-view scroll-y style="height: 100%;" @scrolltolower="loadMore">
-        <header class="border-bottom1 flex-align-spacebetween" style="height: 40px">
-          <a class="flex-align paddingX10" @tap="$router.push('/pages/select_city')">
+        <header class="border-bottom1 flex-align-spacebetween" style="height: 80rpx">
+          <a class="flex-align paddingX20" @tap="$router.push('/pages/select_city')">
             {{curCity}}<i class="icon-uparrow rotate180 color-999"></i>
           </a>
-          <div class="font-size1 bold flex-align">
+          <div class="font-size2 bold flex-align">
             <p :class="['headerTab', {'cur': headerTab===1}]" @tap="switchTab('header', 1)">热映</p>
             <p :class="['headerTab', {'cur': headerTab===2}]" @tap="switchTab('header', 2)">待映</p>
           </div>
-          <a class="height100 padding-left10 padding-right15 borderleft1 flex-align-justify" @tap="$router.push('search')">
-            <i class="icon-search font-size4 bold color-red"></i>
+          <a class="height100 padding-left20 padding-right30 border-left1 flex-align-justify" @tap="$router.push('search')">
+            <i class="icon-search font-size8 bold color-red"></i>
           </a>
         </header>
         <film-list :mainList="mainList" :nodata="nodata"></film-list>
@@ -58,11 +58,11 @@ export default {
 $color-red: #f0423b;
 .home {
   .headerTab {
-    margin: 0 10px;
-    height: 15px;
-    padding: 10px 5px;
-    color: 999;
-    border-bottom: 1px solid transparent;
+    margin: 0 20rpx;
+    height: 30rpx;
+    padding: 20rpx 10rpx;
+    color: #999;
+    border-bottom: 2rpx solid transparent;
     &.cur {
       color: $color-red;
       border-color: $color-red;
