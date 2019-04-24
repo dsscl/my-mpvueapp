@@ -1,6 +1,6 @@
-/*
-* 请求封装，供参考
-**/
+/**
+ * 请求封装，供参考
+ */
 import store from '@/store'
 import * as types from '@/store/mutation-types'
 import { login } from '@/utils/login'

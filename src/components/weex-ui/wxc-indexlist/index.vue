@@ -9,19 +9,19 @@
     <scroll-view scroll-y style="height:100%;" :scroll-into-view="toView">
       <section v-for="(item, i) in formatList" :key="i"
       :id="item.title==='定位'?'index-0':(item.title==='热门'?'index-1':'index-' + item.title)">
-        <div v-if="!onlyShowList" class="line-height20" style="padding: 12px 15px 8px 15px">{{item.title}}</div>
-        <div v-if="item.type && item.type === 'group' && !onlyShowList" class="bgcolor-white padding10X padding-left15 padding-right40">
+        <div v-if="!onlyShowList" class="line-height40" style="padding: 24rpx 30rpx 16rpx 40rpx">{{item.title}}</div>
+        <div v-if="item.type && item.type === 'group' && !onlyShowList" class="bgcolor-white padding20X padding-left30 padding-right80">
           <p v-for="(jitem, j) in item.data" :key="j">
             <a @tap="switchCity(kitem.city)"  v-for="(kitem, k) in jitem" :key="k" class="inline-block keywordOption">{{kitem.city}}</a>
           </p>
         </div>
-        <div v-if="item.type ==='list'" class="bgcolor-white padding-left15 padding-right40">
-          <a @tap="switchCity(jitem.city)" v-for="(jitem, j) in item.data" :key="j" class="border-bottom1 line-height40">{{jitem.city}}</a>
+        <div v-if="item.type ==='list'" class="bgcolor-white padding-left30 padding-right80">
+          <a @tap="switchCity(jitem.city)" v-for="(jitem, j) in item.data" :key="j" class="border-bottom1 line-height80">{{jitem.city}}</a>
         </div>
       </section>
     </scroll-view>
   </main>
-  <nav v-if="showIndex && !onlyShowList" class="fixed right0 translateY text-align-center font-size-1" style="padding: 1px 5px;z-index: 101">
+  <nav v-if="showIndex && !onlyShowList" class="fixed right0 translateY text-align-center font-size-2" style="padding: 2rpx 10rpx;z-index: 101">
     <li v-for="(item, index) in formatList" :key="index" @tap="gotoIndex(item.title)">{{item.title}}</li>
   </nav>
 </div>
@@ -74,9 +74,9 @@ export default {
 </script>
 <style lang="css" scoped>
   .keywordOption {
-    margin: 5px;
-    padding: 5px 20px;
-    border: 1px solid #e6e6e6;
-    border-radius: 4px;
+    margin: 10rpx;
+    padding: 10rpx 40rpx;
+    border: 2rpx solid #e6e6e6;
+    border-radius: 8rpx;
   }
 </style>
