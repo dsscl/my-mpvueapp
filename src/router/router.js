@@ -45,4 +45,10 @@ module.exports = [{
   config: {
     navigationBarTitleText: '网页'
   }
+}, {
+  path: 'pages/select_seat',
+  name: 'select_seat',
+  config: {
+    navigationBarTitleText: '选择座位'
+  }
 }]

@@ -43,10 +43,13 @@
         <i class="margin-right10 icon-egg color-blue font-size4"></i>片尾有三个彩蛋，不要错过哦~
       </div>
     </main>
-    <footer class="fixed bottom0 width100 bgcolor-red padding30X text-align-center color-white font-size4">优惠购票</footer>
+    <footer class="fixed bottom0 left0 right0">
+      <button open-type="getUserInfo" @getuserinfo="theGetUserInfo" style="background-color: #f0423b;border-radius: 0;color: #fff">优惠购票</button>
+    </footer>
   </div>
 </template>
 <script>
+import { getUserInfo } from '@/utils/business'
 export default {
   data() {
     return {
@@ -56,6 +59,23 @@ export default {
   onLoad() {
     this.item = JSON.parse(decodeURIComponent(this.$route.query.film))
   },
+  methods: {
+    theGetUserInfo() {
+      new Promise(resolve => {
+        if(!this.$store.getters.isLogin) {
+          getUserInfo().then(() => {
+            resolve()
+          }, () => {
+            this.$widget.toastWarn('登录失败')
+          })
+        } else {
+          resolve()
+        }
+      }).then(() => {
+        this.$router.push('select_seat')
+      })
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
